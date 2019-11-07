@@ -13,10 +13,12 @@ func _ready():
 # warning-ignore:return_value_discarded
 	owner.connect("collision_initialized",self,"_set_collision")
 	set_process_unhandled_input(false)
+	
+	connect("body_entered",self,"_on_body_entered")
+	connect("body_exited",self,"_on_body_exited")
 
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	set_collision_mask_bit(player_collision_bits_map[color], true)
-	print(player_collision_bits_map,wall_collision_bits_map)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_select") and owner.get_node("player_controller").current_color == color:
@@ -35,3 +37,4 @@ func _on_body_entered(body):
 # warning-ignore:unused_argument
 func _on_body_exited(body):
 	set_process_unhandled_input(false)
+

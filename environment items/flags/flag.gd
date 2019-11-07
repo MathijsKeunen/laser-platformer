@@ -23,6 +23,8 @@ func _ready():
 	
 # warning-ignore:return_value_discarded
 	owner.connect("collision_initialized",self,"_set_collision")
+	connect("body_entered",self,"_on_flag_body_entered")
+	connect("body_exited",self,"_on_flag_body_exited")
 
 # warning-ignore:unused_argument
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):

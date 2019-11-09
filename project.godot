@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="testProject"
-run/main_scene="res://levels/level 1/level1.tscn"
+config/name="laser platformer"
+run/main_scene="res://scenes/levels/level1.tscn"
 
 [autoload]
 
@@ -51,7 +51,3 @@ window/stretch/aspect="expand"
 2d_physics/layer_10="wall pink"
 2d_render/layer_11="wall beige"
 2d_physics/layer_11="wall beige"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

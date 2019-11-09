@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player_controller.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/environment items/ground/grass.png" type="Texture" id=7]
 [ext_resource path="res://scenes/laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 70, 0, 70, 70, 40.2282, 65.1001, 19.8785, 56.8633, 5.66604, 42.8123, 0.497864, 28.9228 )
@@ -532,6 +533,10 @@ position = Vector2( 380, 384 )
 collision_mask = 8
 color = "green"
 active = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 10 )]
 [connection signal="collision_initialized" from="." to="world/lasers" method="_on_level_collision_initialized"]
 [connection signal="start_switch_animation" from="player_controller" to="drone" method="_on_start_camera_animation"]
 [connection signal="finish_camera_animation" from="drone" to="player_controller" method="_on_drone_finish_camera_animation"]

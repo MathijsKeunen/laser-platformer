@@ -1,11 +1,14 @@
 extends Node2D
 
 export(NodePath) var start_player
+
 onready var all_players = get_children()
+
 var current_player
 var current_color
 var key_player_map = {}
 
+signal players_ready(key_player_map)
 signal start_switch_animation(current_position,new_position)
 
 func _ready():
@@ -18,6 +21,8 @@ func _ready():
 	current_player = get_node(start_player)
 	current_color = current_player.color
 	current_player.enter()
+	
+	emit_signal("players_ready",key_player_map)
 
 func _unhandled_input(event):
 	

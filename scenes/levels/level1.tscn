@@ -538,7 +538,7 @@ color = "green"
 active = false
 
 [node name="HUD" parent="." instance=ExtResource( 11 )]
-[connection signal="collision_initialized" from="." to="world/lasers" method="_set_collision"]
+[connection signal="collision_initialized" from="." to="world/lasers" method="_on_level_collision_initialized"]
 [connection signal="players_ready" from="player_controller" to="HUD" method="_on_player_controller_players_ready"]
 [connection signal="start_switch_animation" from="player_controller" to="drone" method="_on_start_camera_animation"]
 [connection signal="finish_camera_animation" from="drone" to="player_controller" method="_on_drone_finish_camera_animation"]

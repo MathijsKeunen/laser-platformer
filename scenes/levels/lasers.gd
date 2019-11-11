@@ -1,4 +1,4 @@
 extends Node2D
 
-func _set_collision(player_collision_bits_map, wall_collision_bits_map):
+func _on_level_collision_initialized(player_collision_bits_map, wall_collision_bits_map):
 	pass # Replace with function body.

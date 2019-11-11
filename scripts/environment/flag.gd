@@ -23,14 +23,12 @@ func _ready():
 	
 	connect("entered",$"..","_on_flag_entered")
 	connect("exited",$"..","_on_flag_exited")
-	print(get_node("/root/level/HUD").get_name())
+	
 	connect("entered",get_node("/root/level/HUD"),"activate_check_mark")
 	connect("exited",get_node("/root/level/HUD"),"deactivate_check_mark")
 	
 # warning-ignore:return_value_discarded
 	owner.connect("collision_initialized",self,"_set_collision")
-	connect("body_entered",self,"_on_flag_body_entered")
-	connect("body_exited",self,"_on_flag_body_exited")
 
 # warning-ignore:unused_argument
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):

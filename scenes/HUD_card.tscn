@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/HUD_card.gd" type="Script" id=1]
+[ext_resource path="res://scripts/HUD_card.gd" type="Script" id=1]
 [ext_resource path="res://assets/HUD/player_heads/blue_no_check.png" type="Texture" id=2]
 
 [node name="HUD_card" type="VBoxContainer"]

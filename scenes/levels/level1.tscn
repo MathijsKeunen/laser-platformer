@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player_controller.tscn" type="PackedScene" id=2]
@@ -7,10 +7,9 @@
 [ext_resource path="res://scripts/environment/FlagController.gd" type="Script" id=5]
 [ext_resource path="res://scenes/flag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/environment items/ground/grass.png" type="Texture" id=7]
-[ext_resource path="res://scenes/levels/lasers.gd" type="Script" id=8]
-[ext_resource path="res://scenes/laser.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/laser.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 70, 0, 70, 70, 40.2282, 65.1001, 19.8785, 56.8633, 5.66604, 42.8123, 0.497864, 28.9228 )
@@ -492,7 +491,6 @@ smoothing_speed = 1.0
 [node name="world" type="Node2D" parent="."]
 
 [node name="FlagController" type="Node2D" parent="world"]
-editor/display_folded = true
 script = ExtResource( 5 )
 
 [node name="blue" parent="world/FlagController" instance=ExtResource( 6 )]
@@ -509,36 +507,34 @@ format = 1
 tile_data = PoolIntArray( -131061, 4, 65538, -65525, 4, 65538, 11, 4, 65538, 65547, 4, 65538, 196606, 0, 0, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 1, 131079, 0, 1, 131080, 5, 65536, 131083, 4, 65538, 196616, 4, 65539, 196619, 4, 65538, 262152, 4, 65539, 262155, 4, 65538, 327689, 0, 393217, 393216, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 1, 393221, 0, 1, 393222, 1, 3, 393224, 0, 393217, 393225, 0, 393216, 393231, 9, 0, 458752, 3, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 1, 2, 458759, 1, 3, 524295, 1, 2, 524296, 0, 1, 524297, 0, 1, 524298, 0, 1, 524299, 0, 1, 589842, 8, 0 )
 
 [node name="lasers" type="Node2D" parent="world"]
-script = ExtResource( 8 )
 
-[node name="green1" parent="world/lasers" instance=ExtResource( 9 )]
+[node name="green1" parent="world/lasers" instance=ExtResource( 8 )]
 tile_data = PoolIntArray( 262153, 0, 0, 262154, 0, 0 )
 color = "green"
 active = false
 
-[node name="green2" parent="world/lasers" instance=ExtResource( 9 )]
+[node name="green2" parent="world/lasers" instance=ExtResource( 8 )]
 tile_data = PoolIntArray( 131081, 0, 0, 131082, 0, 0 )
 color = "green"
 
-[node name="blue" parent="world/lasers" instance=ExtResource( 9 )]
+[node name="blue" parent="world/lasers" instance=ExtResource( 8 )]
 tile_data = PoolIntArray( 196611, 1, 0, 262147, 1, 0, 327683, 1, 0 )
 
 [node name="switches" type="Node2D" parent="world"]
 editor/display_folded = true
 
-[node name="blue" parent="world/switches" instance=ExtResource( 10 )]
+[node name="blue" parent="world/switches" instance=ExtResource( 9 )]
 position = Vector2( 456, 106 )
 collision_mask = 8
 active = false
 
-[node name="green" parent="world/switches" instance=ExtResource( 10 )]
+[node name="green" parent="world/switches" instance=ExtResource( 9 )]
 position = Vector2( 380, 384 )
 collision_mask = 8
 color = "green"
 active = false
 
-[node name="HUD" parent="." instance=ExtResource( 11 )]
-[connection signal="collision_initialized" from="." to="world/lasers" method="_on_level_collision_initialized"]
+[node name="HUD" parent="." instance=ExtResource( 10 )]
 [connection signal="players_ready" from="player_controller" to="HUD" method="_on_player_controller_players_ready"]
 [connection signal="start_switch_animation" from="player_controller" to="drone" method="_on_start_camera_animation"]
 [connection signal="finish_camera_animation" from="drone" to="player_controller" method="_on_drone_finish_camera_animation"]

@@ -5,7 +5,6 @@ export var animation_time = 0.2
 var camera_position
 var start_position
 var end_position
-var interpolation
 var elapsed_time
 
 signal finish_camera_animation

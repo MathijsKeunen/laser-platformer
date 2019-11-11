@@ -21,6 +21,12 @@ func _ready():
 	sprite.set_sprite_frames(load("res://assets/environment items/flags/animations/" + color + ".tres"))
 	sprite.play("hanging")
 	
+	connect("entered",$"..","_on_flag_entered")
+	connect("exited",$"..","_on_flag_exited")
+	print(get_node("/root/level/HUD").get_name())
+	connect("entered",get_node("/root/level/HUD"),"activate_check_mark")
+	connect("exited",get_node("/root/level/HUD"),"deactivate_check_mark")
+	
 # warning-ignore:return_value_discarded
 	owner.connect("collision_initialized",self,"_set_collision")
 	connect("body_entered",self,"_on_flag_body_entered")

@@ -7,6 +7,9 @@ signal all_flags_reached
 func _ready():
 	for child in get_children():
 		reached_flags[child.color] = false
+	
+# warning-ignore:return_value_discarded
+	connect("all_flags_reached",owner,"_on_all_flags_reached")
 
 func _on_flag_entered(color):
 	reached_flags[color] = true

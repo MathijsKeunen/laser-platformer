@@ -22,6 +22,11 @@ func _ready():
 	current_color = current_player.color
 	current_player.enter()
 	
+# warning-ignore:return_value_discarded
+	connect("start_switch_animation",get_node("../drone"),"_on_start_camera_animation")
+# warning-ignore:return_value_discarded
+	connect("players_ready",get_node("../HUD"),"_on_player_controller_players_ready")
+	
 	emit_signal("players_ready",key_player_map)
 
 func _unhandled_input(event):

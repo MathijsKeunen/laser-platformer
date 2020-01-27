@@ -22,6 +22,10 @@ func _ready():
 	sprite.play("hanging")
 	
 # warning-ignore:return_value_discarded
+	connect("body_entered",self,"_on_flag_body_entered")
+# warning-ignore:return_value_discarded
+	connect("body_exited",self,"_on_flag_body_exited")
+# warning-ignore:return_value_discarded
 	connect("entered",$"..","_on_flag_entered")
 # warning-ignore:return_value_discarded
 	connect("exited",$"..","_on_flag_exited")

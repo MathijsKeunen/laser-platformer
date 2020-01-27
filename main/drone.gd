@@ -11,6 +11,8 @@ signal finish_camera_animation
 
 func _ready():
 	set_process(false)
+# warning-ignore:return_value_discarded
+	connect("finish_camera_animation",get_node("../player_controller"),"_on_drone_finish_camera_animation")
 
 func _process(delta):
 	if elapsed_time >= animation_time:
@@ -23,7 +25,6 @@ func _process(delta):
 		set_position(camera_position)
 
 func _on_start_camera_animation(current_position, new_position):
-	
 	set_position(current_position)
 	start_position = current_position
 	end_position = new_position

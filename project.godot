@@ -16,11 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="laser platformer"
-run/main_scene="res://scenes/levels/level1.tscn"
-
-[autoload]
-
-UserData="*res://addons/github-integration/scripts/user_data.gd"
+run/main_scene="res://levels/level1.tscn"
 
 [display]
 

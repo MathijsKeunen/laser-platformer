@@ -17,7 +17,7 @@ func _ready():
 
 	for player in all_players:
 		player.exit()
-		
+	
 	current_player = get_node(start_player)
 	current_color = current_player.color
 	current_player.enter()

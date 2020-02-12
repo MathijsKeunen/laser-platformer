@@ -4,7 +4,7 @@ export var max_horizontal_levels = 8
 export var max_vertical_levels = 4
 
 export var world_folder = "res://levels/world1"
-export var texture_path = "res://main/level_selection/grass.png"
+export var texture_path = "res://levels/world1/grass.png"
 
 func _ready():
 	var levels = _list_levels()
@@ -13,28 +13,26 @@ func _ready():
 	_add_levels(levels, containers, max_horizontal_levels)
 
 func _list_levels():
-	
+
 	var dir = Directory.new()
 	dir.open(world_folder)
-	dir.list_dir_begin(true)
 	
-	var files = []
-	var file = dir.get_next()
-	while file != "":
-		files.append(world_folder + "/" + file)
-		file = dir.get_next()
+	var levels = []
+	var i = 1
+	var level = world_folder + "/1.tscn"
+	while dir.file_exists(level):
+		levels.append(level)
+		i += 1
+		level = world_folder +"/" + str(i) + ".tscn"
 	
-	files.sort_custom(self, "_sort_numerical")
-	
-	return files
+	return levels
 
 func _add_containers(vertical):
 	var children = []
 	for i in range(vertical):
 		var container = HBoxContainer.new()
-#		container.set_v_size_flags(1)
 		container.set_v_size_flags(3)
-#		container.add_to_group("level_cards")
+		container.set("custom_constants/separation", 20)
 		children.append(container)
 		add_child(container)
 	
@@ -45,11 +43,10 @@ func _add_levels(levels, containers, horizontal):
 		var y = i/horizontal
 		_add_card(levels[i], i + 1, containers[y])
 	
-	var remaining_space = horizontal - len(levels) % horizontal
-	var margin = MarginContainer.new()
-	margin.set_h_size_flags(3)
-	margin.set_stretch_ratio(remaining_space)
-	containers[len(levels)/horizontal].add_child(margin)
+	for i in range(horizontal - len(levels) % horizontal):
+		var margin = Control.new()
+		margin.set_h_size_flags(3)
+		containers[len(levels)/horizontal].add_child(margin)
 
 func _add_card(level, number, container):
 	var card = load("res://main/level_selection/level_selection_card.tscn").instance()
@@ -57,6 +54,3 @@ func _add_card(level, number, container):
 	card.texture_path = texture_path
 	card.level = level
 	container.add_child(card)
-
-func _sort_numerical(a, b):
-	return int(a.get_file()) < int(b.get_file())

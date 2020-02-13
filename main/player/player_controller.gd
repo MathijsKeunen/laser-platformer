@@ -52,3 +52,12 @@ func switch_color(new_player):
 
 func _on_drone_finish_camera_animation():
 	current_player.enter()
+
+func _pause(pause):
+	if pause:
+		current_player.exit()
+		current_player.get_node("state_machine").set_physics_process(false)
+	
+	else:
+		current_player.enter()
+		current_player.get_node("state_machine").set_physics_process(true)

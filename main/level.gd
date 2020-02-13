@@ -1,12 +1,10 @@
 extends Node2D
 
 signal collision_initialized(player_collision_bits_map, wall_collision_bits_map)
-export(String) var world
+signal level_exited
 
 var all_colors = []
-
 var player_collision_bits_map = {}
-
 var wall_collision_bits_map = {}
 
 func _ready():
@@ -22,9 +20,11 @@ func _ready():
 		wall_collision_bits_map[all_colors[index]] = len(all_colors) + index + 1
 	
 	emit_signal("collision_initialized",player_collision_bits_map,wall_collision_bits_map)
+	
+	connect("level_exited", get_tree().get_root().get_child(0), "_change_scene")
 
 func _on_all_flags_reached():
 	print("all flags reached")
 
 func _exit_level():
-	get_tree().change_scene(world)
+	emit_signal("level_exited", "previous")

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="laser platformer"
-run/main_scene="res://levels/world1/level__selection.tscn"
+run/main_scene="res://main/main_menu.tscn"
 
 [display]
 

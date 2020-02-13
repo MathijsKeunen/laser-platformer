@@ -1,5 +1,7 @@
 extends Control
 
+signal level_selected
+
 export(String) var texture_path
 export(int) var number
 export(NodePath) var level
@@ -7,6 +9,8 @@ export(NodePath) var level
 func _ready():
 	$block.set_texture(load(texture_path))
 	_set_number_texture(number)
+	
+	connect("level_selected",get_tree().get_root().get_child(0), "_change_scene")
 
 func _set_number_texture(number):
 	var numbers = _get_numbers(number)
@@ -19,7 +23,7 @@ func _set_number_texture(number):
 
 func _on_level_selection_card_gui_input(event):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
-		get_tree().change_scene(level)
+		emit_signal("level_selected", level)
 
 func _get_numbers(number):
 	var numbers = []

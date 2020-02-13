@@ -1,6 +1,7 @@
 extends Node2D
 
 signal collision_initialized(player_collision_bits_map, wall_collision_bits_map)
+export(String) var world
 
 var all_colors = []
 
@@ -24,3 +25,6 @@ func _ready():
 
 func _on_all_flags_reached():
 	print("all flags reached")
+
+func _exit_level():
+	get_tree().change_scene(world)

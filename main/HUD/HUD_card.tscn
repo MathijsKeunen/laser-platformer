@@ -7,6 +7,9 @@
 margin_right = 47.0
 margin_bottom = 65.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="image" type="TextureRect" parent="."]
 margin_right = 54.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main/level.gd" type="Script" id=1]
 [ext_resource path="res://main/player/player_controller.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://main/world/ground/tileset.tres" type="TileSet" id=8]
 [ext_resource path="res://main/drone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/HUD/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://main/pause_menu/pause_menu.tscn" type="PackedScene" id=11]
 
 [node name="level" type="Node2D"]
 script = ExtResource( 1 )
@@ -49,4 +50,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 262142, 0
 [node name="drone" parent="." instance=ExtResource( 9 )]
 
 [node name="HUD" parent="." instance=ExtResource( 10 )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 11 )]
 [connection signal="switched_inversed" from="world/switches/blue" to="world/lasers/blue" method="_set_active"]

@@ -19,7 +19,6 @@ func _set_number_texture(number):
 
 func _on_level_selection_card_gui_input(event):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
-		print(level)
 		get_tree().change_scene(level)
 
 func _get_numbers(number):

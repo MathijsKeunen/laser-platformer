@@ -2,13 +2,14 @@ extends CanvasLayer
 
 var color_map = {}
 
-func _on_player_controller_players_ready(key_player_map):
-	for key in key_player_map:
+func _on_player_controller_players_ready(action_player_map):
+	for action in action_player_map:
 		var child = load("res://main/HUD/HUD_card.tscn").instance()
-		var color = key_player_map[key].color
+		var color = action_player_map[action].color
 		color_map[color] = child
 		child.color = color
-		child.key = key
+		var key = InputMap.get_action_list(action)
+		child.key = key[0].as_text()
 		$Margin/HBoxContainer.add_child(child)
 
 func activate_check_mark(color):

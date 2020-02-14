@@ -29,7 +29,7 @@ func _list_levels():
 
 func _add_containers(vertical):
 	var children = []
-	for i in range(vertical):
+	for _i in range(vertical):
 		var container = HBoxContainer.new()
 		container.set_v_size_flags(3)
 		container.set("custom_constants/separation", 20)
@@ -43,7 +43,7 @@ func _add_levels(levels, containers, horizontal):
 		var y = i/horizontal
 		_add_card(levels[i], i + 1, containers[y])
 	
-	for i in range(horizontal - len(levels) % horizontal):
+	for _i in range(horizontal - len(levels) % horizontal):
 		var margin = Control.new()
 		margin.set_h_size_flags(3)
 		containers[len(levels)/horizontal].add_child(margin)

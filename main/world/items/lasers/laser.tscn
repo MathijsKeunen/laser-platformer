@@ -3,11 +3,9 @@
 [ext_resource path="res://main/world/items/lasers/sprites/tilesets/blue.tres" type="TileSet" id=1]
 [ext_resource path="res://main/world/items/lasers/laser.gd" type="Script" id=2]
 
-
-
-
-
-[node name="laser" type="TileMap"]
+[node name="laser" type="TileMap" groups=[
+"laser",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 70, 70 )
 collision_layer = 0

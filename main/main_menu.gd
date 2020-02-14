@@ -6,7 +6,7 @@ var scene_stack = []
 
 func _ready():
 	add_child(current_scene)
-	get_tree().set_current_scene(current_scene)
+#	get_tree().set_current_scene(current_scene)
 
 func _change_scene(path = "previous"):
 	call_deferred("_deferred_change_scene", path)
@@ -23,4 +23,4 @@ func _deferred_change_scene(path):
 	current_scene = load(current_scene_path).instance()
 	
 	add_child(current_scene)
-	get_tree().set_current_scene(current_scene)
+#	get_tree().set_current_scene(current_scene)

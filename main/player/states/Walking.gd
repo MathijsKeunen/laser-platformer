@@ -12,7 +12,6 @@ func enter(velocity = Vector2()):
 	
 	.enter(velocity)
 
-# warning-ignore:unused_argument
 func update(delta):
 	
 	var look_direction = get_input_direction()

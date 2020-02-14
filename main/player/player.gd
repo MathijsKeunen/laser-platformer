@@ -1,9 +1,7 @@
 extends KinematicBody2D
 
-# warning-ignore:unused_class_variable
 export var color = "blue"
 
-# warning-ignore:unused_class_variable
 var enabled
 var look_direction = 1
 

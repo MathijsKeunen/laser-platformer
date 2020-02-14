@@ -7,12 +7,10 @@ export var color = "blue"
 
 onready var sprite = $AnimatedSprite
 
-# warning-ignore:unused_argument
 func _on_flag_body_entered(body):
 	sprite.play("waving")
 	emit_signal("entered",color)
 
-# warning-ignore:unused_argument
 func _on_flag_body_exited(body):
 	sprite.play("hanging")
 	emit_signal("exited",color)
@@ -31,13 +29,12 @@ func _ready():
 	connect("exited",$"..","_on_flag_exited")
 	
 # warning-ignore:return_value_discarded
-	connect("entered",get_node("/root/level/HUD"),"activate_check_mark")
+	connect("entered",owner.get_node("HUD"),"activate_check_mark")
 # warning-ignore:return_value_discarded
-	connect("exited",get_node("/root/level/HUD"),"deactivate_check_mark")
+	connect("exited",owner.get_node("HUD"),"deactivate_check_mark")
 	
 # warning-ignore:return_value_discarded
 	owner.connect("collision_initialized",self,"_set_collision")
 
-# warning-ignore:unused_argument
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	set_collision_mask_bit(player_collision_bits_map[color], true)

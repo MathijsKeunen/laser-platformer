@@ -28,3 +28,6 @@ func _on_all_flags_reached():
 
 func _exit_level():
 	emit_signal("level_exited", "previous")
+
+func _restart_level():
+	emit_signal("level_exited", "restart")

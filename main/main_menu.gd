@@ -16,6 +16,9 @@ func _deferred_change_scene(path):
 	if path == "previous":
 		current_scene_path = scene_stack.pop_front()
 	
+	elif path == "restart":
+		pass
+	
 	else:
 		scene_stack.push_front(current_scene_path)
 		current_scene_path = path

@@ -7,6 +7,8 @@ var start_position
 var end_position
 var elapsed_time
 
+onready var curve = load("res://main/drone/interpolation_curve.tres")
+
 signal finish_camera_animation
 
 func _ready():
@@ -19,9 +21,11 @@ func _process(delta):
 		emit_signal("finish_camera_animation")
 		set_process(false)
 		
+		
 	else:
 		elapsed_time += delta
-		camera_position = start_position.linear_interpolate(end_position,elapsed_time/animation_time)
+		var interpolation = curve.interpolate(elapsed_time/animation_time)
+		camera_position = start_position + interpolation * (end_position - start_position)
 		set_position(camera_position)
 
 func _on_start_camera_animation(current_position, new_position):

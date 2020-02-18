@@ -3,7 +3,7 @@
 [ext_resource path="res://main/level.gd" type="Script" id=1]
 [ext_resource path="res://main/player/player_controller.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/drone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://main/drone/drone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main/world/items/flags/FlagController.gd" type="Script" id=5]
 [ext_resource path="res://main/world/items/flags/flag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/world/ground/grass.png" type="Texture" id=7]
@@ -11,6 +11,7 @@
 [ext_resource path="res://main/world/items/switches/switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://main/HUD/HUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main/pause_menu/pause_menu.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 70, 0, 70, 70, 40.2282, 65.1001, 19.8785, 56.8633, 5.66604, 42.8123, 0.497864, 28.9228 )

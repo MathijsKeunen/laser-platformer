@@ -22,12 +22,14 @@ func _ready():
 
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	#sets collision of the switch
+	set_collision_layer_bit(player_collision_bits_map[color], true)
 	set_collision_mask_bit(player_collision_bits_map[color], true)
 
-func _switch_input(player):
+func _switch_input(switch_id):
 	#called when a player tries to pull a switch
 	#checks if the player is in reach of the switch and if the color matches
-	if overlaps_body(player) and player.color == color:
+	if get_node(".") == switch_id:
+#	if overlaps_body(player) and player.color == color:
 		switch()
 
 func switch():

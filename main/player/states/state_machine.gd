@@ -16,7 +16,6 @@ func _unhandled_input(event):
 	current_state.handle_input(event)
 
 func switch_state(state_name, velocity = Vector2()):
-	
 	current_state.exit()
 	current_state = states_map[state_name]
 	current_state.enter(velocity)

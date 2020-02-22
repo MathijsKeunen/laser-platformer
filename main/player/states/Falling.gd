@@ -21,7 +21,6 @@ func update(delta):
 	
 	.update(delta)
 
-# warning-ignore:unused_argument
 func calculate_horizonatal_speed(horizontal_speed):
 	
 	var look_direction = get_input_direction()

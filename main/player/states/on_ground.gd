@@ -1,7 +1,7 @@
 extends "motion.gd"
 
 func handle_input(event):
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("jump"):
 		emit_signal("finished","Jumping",speed)
 	
 	if event.is_action_pressed("ui_down"):

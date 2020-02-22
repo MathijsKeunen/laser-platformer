@@ -30,3 +30,4 @@ func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	#sets collision of the player
 	set_collision_layer_bit(player_collision_bits_map[color], true)
 	set_collision_mask_bit(wall_collision_bits_map[color], true)
+	$Area2D.set_collision_mask_bit(player_collision_bits_map[color], true)

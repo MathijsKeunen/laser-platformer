@@ -21,5 +21,15 @@ func update_look_direction(direction):
 		owner.look_direction = direction
 
 func handle_input(event):
-	if event.is_action_pressed("ui_select"):
-		emit_signal("switch_input", owner)
+	
+	if event.is_action_pressed("pull_switch"):
+		var areas = owner.get_node("Area2D").get_overlapping_areas()
+		for area in areas:
+			if area.is_in_group("switch"):
+				emit_signal("switch_input", area)
+	
+	if event.is_action_pressed("ui_up"):
+		var areas = owner.get_node("Area2D").get_overlapping_areas()
+		for area in areas:
+			if area.is_in_group("ladder"):
+				emit_signal("finished", "Climbing")

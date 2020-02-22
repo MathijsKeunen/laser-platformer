@@ -42,6 +42,5 @@ func exit():
 	
 	.exit()
 
-# warning-ignore:unused_argument
 func handle_input(event):
 	pass

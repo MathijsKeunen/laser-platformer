@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/player/states/state_machine.gd" type="Script" id=2]
@@ -9,14 +9,12 @@
 [ext_resource path="res://main/player/states/Ducking.gd" type="Script" id=7]
 [ext_resource path="res://main/player/sprites/animations/blue.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://main/player/PlayerSprite.gd" type="Script" id=9]
+[ext_resource path="res://main/player/collisionShapeDucking.tres" type="Shape2D" id=10]
+[ext_resource path="res://main/player/states/Climbing.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 35.0
 height = 23.9388
-
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 34.0
-height = 0.0
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -43,17 +41,28 @@ script = ExtResource( 6 )
 [node name="Ducking" type="Node2D" parent="state_machine"]
 script = ExtResource( 7 )
 
+[node name="Climbing" type="Node2D" parent="state_machine"]
+script = ExtResource( 11 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 8 )
 animation = "Hurt"
 script = ExtResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="CollisionShapeDucking" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 12.47 )
-shape = SubResource( 2 )
+shape = ExtResource( 10 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 12.47 )
+shape = ExtResource( 10 )

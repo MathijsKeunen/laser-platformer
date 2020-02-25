@@ -13,7 +13,7 @@
 [ext_resource path="res://main/player/states/Climbing.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 35.0
+radius = 34.9
 height = 23.9388
 
 [node name="player" type="KinematicBody2D" groups=[

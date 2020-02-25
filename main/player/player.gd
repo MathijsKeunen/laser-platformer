@@ -9,6 +9,12 @@ export var color = "blue"
 
 var enabled
 var look_direction = 1
+var input_direction = {
+	"left": false,
+	"right": false,
+	"down": false,
+	"up": false
+	}
 
 func enter():
 	#activates the player
@@ -20,6 +26,8 @@ func enter():
 func exit():
 	#deactivates the player
 	enabled = false
+	input_direction["left"] = false
+	input_direction["right"] = false
 	$state_machine.set_process_unhandled_input(false)
 
 func _ready():
@@ -31,3 +39,9 @@ func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	set_collision_layer_bit(player_collision_bits_map[color], true)
 	set_collision_mask_bit(wall_collision_bits_map[color], true)
 	$Area2D.set_collision_mask_bit(player_collision_bits_map[color], true)
+
+func get_overlapping_ladder():
+	var areas = $Area2D.get_overlapping_areas()
+	for area in areas:
+		if area.is_in_group("ladder"):
+			return area

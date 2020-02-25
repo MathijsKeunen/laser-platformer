@@ -14,11 +14,10 @@ func enter(velocity = Vector2()):
 
 func update(delta):
 	
-	var look_direction = get_input_direction()
+	var look_direction = get_horizontal_input_direction()
 	update_look_direction(look_direction)
 	
 	if not look_direction:
-		
 		emit_signal("finished","Standing")
 		
 	else:

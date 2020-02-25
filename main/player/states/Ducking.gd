@@ -14,7 +14,7 @@ func enter(velocity = Vector2()):
 
 func update(delta):
 	
-	var look_direction = get_input_direction()
+	var look_direction = get_horizontal_input_direction()
 	update_look_direction(look_direction)
 	
 	if (not owner.enabled or not Input.is_action_pressed("ui_down"))\
@@ -40,7 +40,5 @@ func update(delta):
 func exit():
 	owner.get_node("CollisionShapeStanding").set_disabled(false)
 	
+	owner.input_direction["down"] = false
 	.exit()
-
-func handle_input(event):
-	pass

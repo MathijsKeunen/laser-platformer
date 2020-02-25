@@ -1,10 +1,14 @@
 extends "motion.gd"
 
 func handle_input(event):
-	if event.is_action_pressed("jump"):
-		emit_signal("finished","Jumping",speed)
-	
-	if event.is_action_pressed("ui_down"):
+	if event.is_action_pressed("ui_up"):
+		if owner.get_overlapping_ladder():
+			emit_signal("finished", "Climbing")
+		
+		else:
+			emit_signal("finished", "Jumping", speed)
+
+	elif event.is_action_pressed("ui_down"):
 		emit_signal("finished","Ducking",speed)
 	
 	.handle_input(event)

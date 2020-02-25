@@ -23,7 +23,7 @@ func update(delta):
 
 func calculate_horizonatal_speed(horizontal_speed):
 	
-	var look_direction = get_input_direction()
+	var look_direction = get_horizontal_input_direction()
 	update_look_direction(look_direction)
 	
 	if look_direction:
@@ -38,7 +38,10 @@ func calculate_horizonatal_speed(horizontal_speed):
 func floor_detection():
 	
 	if owner.is_on_floor():
-		if speed.x == 0:
+		if owner.input_direction["down"]:
+			emit_signal("finished", "Ducking")
+		
+		elif speed.x == 0:
 			emit_signal("finished","Standing")
 		
 		else:

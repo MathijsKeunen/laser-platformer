@@ -8,7 +8,10 @@ func enter(velocity = Vector2()):
 	speed.x = velocity.x
 	speed.y = 0
 	
-	owner.get_node("Sprite").play("Walking")
+	if speed.x == 0:
+		owner.get_node("Sprite").play("Standing")
+	else:
+		owner.get_node("Sprite").play("Walking")
 	
 	.enter(velocity)
 
@@ -18,16 +21,17 @@ func update(delta):
 	update_look_direction(look_direction)
 	
 	if not look_direction:
-		emit_signal("finished","Standing")
-		
+		speed.x = 0
+		owner.get_node("Sprite").play("Standing")
+	
 	else:
-		
-		if speed.x*look_direction < MaxWalkSpeed:
-			speed.x += Acceleration*look_direction
-		
-		else:
-			speed.x = MaxWalkSpeed*look_direction
-
-		speed = owner.move_and_slide_with_snap(speed,Vector2(0,1),floor_normal,false,4,0.8)
+		owner.get_node("Sprite").play("Walking")
+		speed.x += Acceleration*look_direction
+		speed.x = clamp(speed.x, -MaxWalkSpeed, MaxWalkSpeed)
+	
+	speed = owner.move_and_slide_with_snap(speed,Vector2(0,1),floor_normal,false,4,0.8)
+	
+	if owner.input_direction["down"]:
+		emit_signal("finished", "Ducking")
 	
 	.update(delta)

@@ -13,7 +13,7 @@ func get_horizontal_input_direction():
 	return int(owner.input_direction["right"]) - int(owner.input_direction["left"])
 
 func get_vertical_input_direction():
-	return int(owner.input_direction["up"]) - int(owner.input_direction["down"])
+	return int(owner.input_direction["down"]) - int(owner.input_direction["up"])
 
 func update_look_direction(direction):
 	
@@ -36,7 +36,7 @@ func handle_input(event):
 		owner.input_direction["down"] = event.is_pressed()
 	
 	if event.is_action_pressed("pull_switch"):
-		var areas = owner.get_node("Area2D").get_overlapping_areas()
+		var areas = owner.get_node("BodyArea").get_overlapping_areas()
 		for area in areas:
 			if area.is_in_group("switch"):
 				emit_signal("switch_input", area)

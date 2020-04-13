@@ -6,7 +6,8 @@ export var Gravity = 1600
 export var Decceleration = 10
 
 func enter(velocity = Vector2()):
-	speed.x = velocity.x
+	speed = velocity
+#	speed.x = velocity.x
 	owner.get_node("Sprite").play("Jumping")
 	
 	.enter(velocity)
@@ -38,11 +39,11 @@ func calculate_horizonatal_speed(horizontal_speed):
 func floor_detection():
 	
 	if owner.is_on_floor():
-		if owner.input_direction["down"]:
-			emit_signal("finished", "Ducking")
+		if owner.input_direction["up"] and owner.collides_with_area_type("ladder"):
+			emit_signal("finished", "Climbing")
 		
-		elif speed.x == 0:
-			emit_signal("finished","Standing")
+		elif owner.input_direction["down"]:
+			emit_signal("finished", "Ducking")
 		
 		else:
 			emit_signal("finished","Walking",speed)

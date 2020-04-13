@@ -17,11 +17,10 @@ func update(delta):
 	var look_direction = get_horizontal_input_direction()
 	update_look_direction(look_direction)
 	
-	if (not owner.enabled or not Input.is_action_pressed("ui_down"))\
-	 and not owner.test_move(owner.get_transform(), Vector2(0, -23.939)):
-		if speed.x == 0:
-			emit_signal("finished","Standing")
-		
+	if not owner.input_direction["down"] and \
+			not owner.test_move(owner.get_transform(), Vector2(0, -23.939)):
+		if owner.input_direction["up"] and owner.collides_with_area_type("ladder"):
+			emit_signal("finished", "Climbing")
 		else:
 			emit_signal("finished","Walking",speed)
 	

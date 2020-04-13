@@ -4,5 +4,6 @@ export var JumpSpeed = 800
 
 func enter(velocity = Vector2()):
 	speed.y = -JumpSpeed
-	
-	.enter()
+	velocity.y = -JumpSpeed
+	print("jumping")
+	.enter(velocity)

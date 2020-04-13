@@ -19,6 +19,11 @@ var input_direction = {
 func enter():
 	#activates the player
 	enabled = true
+	input_direction["left"] = Input.is_action_pressed("ui_left")
+	input_direction["right"] = Input.is_action_pressed("ui_right")
+	input_direction["up"] = Input.is_action_pressed("ui_up")
+	input_direction["down"] = Input.is_action_pressed("ui_down")
+	$Sprite.play()
 	$state_machine.set_process_unhandled_input(true)
 	$Camera2D.align()
 	$Camera2D.make_current()
@@ -28,7 +33,10 @@ func exit():
 	enabled = false
 	input_direction["left"] = false
 	input_direction["right"] = false
+	input_direction["down"] = false
+	input_direction["up"] = false
 	$state_machine.set_process_unhandled_input(false)
+	$Sprite.stop()
 
 func _ready():
 	#signal to configure collision
@@ -38,10 +46,13 @@ func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	#sets collision of the player
 	set_collision_layer_bit(player_collision_bits_map[color], true)
 	set_collision_mask_bit(wall_collision_bits_map[color], true)
-	$Area2D.set_collision_mask_bit(player_collision_bits_map[color], true)
+	$BodyArea.set_collision_mask_bit(player_collision_bits_map[color], true)
+	$HeadArea.set_collision_mask_bit(player_collision_bits_map[color], true)
 
-func get_overlapping_ladder():
-	var areas = $Area2D.get_overlapping_areas()
+func collides_with_area_type(type, head_area = false):
+	var collision_area = $BodyArea if not head_area else $HeadArea
+	var areas = collision_area.get_overlapping_areas()
 	for area in areas:
-		if area.is_in_group("ladder"):
-			return area
+		if area.is_in_group(type):
+			return true
+	return false

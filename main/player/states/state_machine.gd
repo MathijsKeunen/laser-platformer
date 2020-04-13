@@ -1,16 +1,14 @@
 extends Node2D
 
 onready var states_map = {
-	"Standing": $Standing, 
 	"Walking": $Walking, 
-	"Jumping": $Jumping,
 	"Falling": $Falling,
 	"Ducking": $Ducking, 
 	"Climbing": $Climbing, 
 	"Swimming": $Swimming
 	}
 
-onready var current_state = states_map["Standing"]
+onready var current_state = states_map["Walking"]
 
 func _unhandled_input(event):
 	current_state.handle_input(event)

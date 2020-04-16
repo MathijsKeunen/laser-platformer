@@ -7,7 +7,6 @@ extends KinematicBody2D
 
 export var color = "blue"
 
-var enabled
 var look_direction = 1
 var input_direction = {
 	"left": false,
@@ -16,27 +15,24 @@ var input_direction = {
 	"up": false
 	}
 
+func reset_input_directions():
+	var active = get_parent().current_player == self
+	input_direction["left"] = Input.is_action_pressed("ui_left") and active
+	input_direction["right"] = Input.is_action_pressed("ui_right") and active
+	input_direction["up"] = Input.is_action_pressed("ui_up") and active
+	input_direction["down"] = Input.is_action_pressed("ui_down") and active
+
 func enter():
 	#activates the player
-	enabled = true
-	input_direction["left"] = Input.is_action_pressed("ui_left")
-	input_direction["right"] = Input.is_action_pressed("ui_right")
-	input_direction["up"] = Input.is_action_pressed("ui_up")
-	input_direction["down"] = Input.is_action_pressed("ui_down")
-	$Sprite.play()
+	reset_input_directions()
 	$state_machine.set_process_unhandled_input(true)
 	$Camera2D.align()
 	$Camera2D.make_current()
 
 func exit():
 	#deactivates the player
-	enabled = false
-	input_direction["left"] = false
-	input_direction["right"] = false
-	input_direction["down"] = false
-	input_direction["up"] = false
+	reset_input_directions()
 	$state_machine.set_process_unhandled_input(false)
-	$Sprite.stop()
 
 func _ready():
 	#signal to configure collision

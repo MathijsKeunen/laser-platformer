@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main/player/player.gd" type="Script" id=1]
 [ext_resource path="res://main/player/states/state_machine.gd" type="Script" id=2]
 [ext_resource path="res://main/player/states/Walking.gd" type="Script" id=3]
 [ext_resource path="res://main/player/states/Falling.gd" type="Script" id=4]
+[ext_resource path="res://main/player/states/Paused.gd" type="Script" id=5]
 [ext_resource path="res://main/player/states/Ducking.gd" type="Script" id=7]
 [ext_resource path="res://main/player/sprites/animations/blue.tres" type="SpriteFrames" id=8]
 [ext_resource path="res://main/player/PlayerSprite.gd" type="Script" id=9]
@@ -39,6 +40,9 @@ script = ExtResource( 7 )
 
 [node name="Climbing" type="Node2D" parent="state_machine"]
 script = ExtResource( 11 )
+
+[node name="Paused" type="Node2D" parent="state_machine"]
+script = ExtResource( 5 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 8 )

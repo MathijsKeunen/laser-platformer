@@ -55,14 +55,15 @@ func _unhandled_input(event):
 func switch_color(new_player):
 	#starts transition to new player
 	#sends a signal to the drone to start the camera animation
-	var current_position = current_player.get_node("Camera2D").get_camera_position()
+	var old_player = current_player
+	current_player = new_player
+	var current_position = old_player.get_node("Camera2D").get_camera_position()
 	var new_position = new_player.get_position()
 	
-	current_player.exit()
+	old_player.exit()
 	emit_signal("start_switch_animation",current_position,new_position)
 	
-	current_player = new_player
-	current_color = current_player.color
+	current_color = new_player.color
 
 func _on_drone_finish_camera_animation():
 	#called when the camera animation for transitioning to the new player is
@@ -73,10 +74,5 @@ func _pause(pause):
 	#called when the pause menu is entered or exited
 	#pause menu is entered if variable pause is true, exited if false
 	#pauses the current player and freezes him into place
-	if pause:
-		current_player.exit()
-		current_player.get_node("state_machine").set_physics_process(false)
-	
-	else:
-		current_player.enter()
-		current_player.get_node("state_machine").set_physics_process(true)
+	for player in get_children():
+		player.get_node("state_machine").switch_state("Paused" if pause else "previous")

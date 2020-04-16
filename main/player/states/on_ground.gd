@@ -4,10 +4,6 @@ export var JumpSpeed = 800
 
 func handle_input(event):
 	if event.is_action_pressed("ui_up") and not owner.collides_with_area_type("ladder"):
-#		if owner.collides_with_area_type("ladder"):
-#			emit_signal("finished", "Climbing")
-		
-#		else:
 		emit_signal("finished", "Falling", Vector2(speed.x, -JumpSpeed))
 	
 	.handle_input(event)

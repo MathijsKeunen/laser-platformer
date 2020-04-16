@@ -17,6 +17,7 @@
 script = ExtResource( 1 )
 
 [node name="player_controller" parent="." instance=ExtResource( 2 )]
+position = Vector2( 20, 0 )
 start_player = NodePath("blue")
 
 [node name="blue" parent="player_controller" instance=ExtResource( 3 )]

@@ -13,14 +13,9 @@
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "Climbing",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Swimming",
+"name": "Walking",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -28,14 +23,14 @@ animations = [ {
 "name": "Ducking",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "Walking",
+"name": "Swimming",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "Jumping",
+"name": "Climbing",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -46,5 +41,10 @@ animations = [ {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "Hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Jumping",
 "speed": 5.0
 } ]

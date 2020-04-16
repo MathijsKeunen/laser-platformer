@@ -59,16 +59,12 @@ func switch_color(new_player):
 	current_player = new_player
 	var current_position = old_player.get_node("Camera2D").get_camera_position()
 	var new_position = new_player.get_position()
-	
-	old_player.exit()
 	emit_signal("start_switch_animation",current_position,new_position)
 	
+	old_player.exit()
 	current_color = new_player.color
-
-func _on_drone_finish_camera_animation():
-	#called when the camera animation for transitioning to the new player is
-	#finished. this is the last step in de transitioning process
-	current_player.enter()
+	yield(get_node("../drone").get_node("Tween"), "tween_all_completed")
+	new_player.enter()
 
 func _pause(pause):
 	#called when the pause menu is entered or exited

@@ -1,11 +1,7 @@
-extends Area2D
-
-export var top = false
+extends TileMap
 
 func _ready():
 	owner.connect("collision_initialized",self,"_set_collision")
-	if top:
-		$Sprite.set_texture(load("res://main/world/items/ladder/ladder_top.png"))
 
 func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 	for bit in player_collision_bits_map.values():

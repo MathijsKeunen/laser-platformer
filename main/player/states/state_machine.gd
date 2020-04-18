@@ -6,7 +6,7 @@ onready var states_map = {
 	"Ducking": $Ducking, 
 	"Climbing": $Climbing, 
 	"Swimming": $Swimming,
-	"Paused": $Paused
+	"Paused": $Paused,
 	}
 
 onready var current_state = states_map["Walking"]

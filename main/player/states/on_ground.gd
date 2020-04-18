@@ -16,4 +16,7 @@ func update(delta):
 		
 		emit_signal("finished","Falling",Vector2(speed.x,0))
 	
+	elif owner.collides_with_body_type("water"):
+		emit_signal("finished", "Swimming", speed)
+	
 	.update(delta)

@@ -47,8 +47,16 @@ func _set_collision(player_collision_bits_map, wall_collision_bits_map):
 
 func collides_with_area_type(type, head_area = false):
 	var collision_area = $BodyArea if not head_area else $HeadArea
-	var areas = collision_area.get_overlapping_areas()
-	for area in areas:
+#	var areas = collision_area.get_overlapping_areas()
+	for area in collision_area.get_overlapping_areas():
 		if area.is_in_group(type):
+			return true
+	return false
+
+func collides_with_body_type(type, head_area = false):
+	var collision_area = $BodyArea if not head_area else $HeadArea
+#	var bodies = collision_area.get_overlapping_bodies()
+	for body in collision_area.get_overlapping_bodies():
+		if body.is_in_group(type):
 			return true
 	return false

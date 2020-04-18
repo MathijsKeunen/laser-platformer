@@ -63,7 +63,7 @@ func switch_color(new_player):
 	
 	old_player.exit()
 	current_color = new_player.color
-	yield(get_node("../drone").get_node("Tween"), "tween_all_completed")
+	yield(get_node("../drone"), "tween_all_completed")
 	new_player.enter()
 
 func _pause(pause):

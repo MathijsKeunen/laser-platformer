@@ -51,6 +51,7 @@ MaxMoveSpeed = 250
 Acceleration = 15
 Gravity = 800
 Decceleration = 3
+MaxFallSpeed = 400
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 8 )

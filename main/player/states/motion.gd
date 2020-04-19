@@ -40,3 +40,8 @@ func handle_input(event):
 		for area in areas:
 			if area.is_in_group("switch"):
 				emit_signal("switch_input", area)
+
+#func update(delta):
+#	if speed.y != 0:
+#		owner.get_node("Label").set_text(str(speed.y))
+#	.update(delta)

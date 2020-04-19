@@ -9,7 +9,7 @@ func handle_input(event):
 	.handle_input(event)
 
 func update(delta):
-	if owner.input_direction["up"] and owner.collides_with_area_type("ladder"):
+	if owner.input_direction["up"] and owner.collides_with_area_type("ladder", true):
 		emit_signal("finished", "Climbing")
 	
 	elif not owner.is_on_floor():

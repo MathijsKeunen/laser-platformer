@@ -23,3 +23,8 @@ func floor_detection():
 		
 		else:
 			emit_signal("finished","Walking",speed)
+
+func handle_input(event):
+	if event.is_action_pressed("ui_up") and owner.collides_with_area_type("ladder", true):
+		emit_signal("finished", "Climbing", speed)
+	.handle_input(event)
